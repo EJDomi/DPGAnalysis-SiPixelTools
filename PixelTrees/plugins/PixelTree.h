@@ -201,6 +201,7 @@ class PixelTree : public edm::EDAnalyzer {
   edm::EDGetTokenT<SiPixelRecHitCollection> PixelRecHitToken;
   edm::EDGetTokenT<std::vector<reco::Track>> TrackToken;
   edm::EDGetTokenT<TrajTrackAssociationCollection> TTAToken;
+  edm::EDGetTokenT<reco::BeamSpot> BeamSpotToken;
 
   bool fAccessSimHitInfo;
   TrackerHitAssociator::Config trackerHitAssociatorConfig_;
@@ -234,6 +235,8 @@ class PixelTree : public edm::EDAnalyzer {
   float fPvX[PVMAX], fPvY[PVMAX],  fPvZ[PVMAX], fPvXe[PVMAX], fPvYe[PVMAX],  fPvZe[PVMAX],  fPvChi2[PVMAX], fPvNdof[PVMAX];
   int   fPvIsFake[PVMAX];
 
+  // -- beam spot
+  float fBsX, fBsY, fBsZ, fBs_sigmaZ, fBs_dxdz, fBs_widthX, fBs_widthY;
 
   // -- muons
   static const int MUMAX = 100; 

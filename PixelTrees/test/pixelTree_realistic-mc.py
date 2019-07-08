@@ -24,7 +24,7 @@ process.load("Configuration.StandardSequences.GeometryRecoDB_cff")
 process.load("RecoVertex.BeamSpotProducer.BeamSpot_cfi")
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
-process.GlobalTag = GlobalTag(process.GlobalTag, '103X_upgrade2018_design_v4', '')
+process.GlobalTag = GlobalTag(process.GlobalTag, '103X_upgrade2018_realistic_v8', '')
 
 # -- Input files
 # POOLSOURCE
@@ -33,16 +33,15 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '103X_upgrade2018_design_v4', '
 process.source = cms.Source(
     "PoolSource",
     fileNames = cms.untracked.vstring(
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/F984AE43-81BB-924A-B609-D2E71471F135.root',
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/F06B1CC1-4447-EB4B-8B5A-E8F004AC0C48.root',
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/D5F18775-BB4D-A344-9920-D34B4A0C89A8.root',
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/8F8A2BB9-A66C-6146-872B-92154E039CB9.root',
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/882A401C-F2B9-9B44-BC93-1443307F359E.root',
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/811A788B-30E0-5945-AC69-372EE9C8C764.root',
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/66F378A5-9A08-B944-BFF6-8F73CD82477E.root',
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/5AF605CB-B724-CF42-9E76-436B27BC9777.root',
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/38253A92-BB14-0E4E-A34A-141F264562AF.root',
-'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_design_v4-v1/10000/06AD71DD-7CA3-FE45-8331-2F175EB42C56.root',
+'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_realistic_v8-v1/10000/FA602714-EDFC-2A49-BA27-4EC29D1F3B13.root',
+'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_realistic_v8-v1/10000/E73A0013-557B-424E-8A66-CDA76C820CFA.root',
+'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_realistic_v8-v1/10000/A71190CB-BF54-2A43-8B95-EC103A4CCE46.root',
+'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_realistic_v8-v1/10000/9C3D2D03-3776-0140-BE76-102A45D63311.root',
+'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_realistic_v8-v1/10000/9C040683-DB5D-0F4B-9395-A876E3FC8057.root',
+'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_realistic_v8-v1/10000/8C058E11-675E-E846-B4E3-F3BCC5D70BDF.root',
+'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_realistic_v8-v1/10000/46937096-DC2A-DA4E-9982-5C7EE41507B5.root',
+'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_realistic_v8-v1/10000/21C928E6-6133-9346-A1FC-13A4A689E6A3.root',
+'/store/relval/CMSSW_10_4_0_pre2/RelValTTbar_13/GEN-SIM-RECO/PU25ns_103X_upgrade2018_realistic_v8-v1/10000/1FBF1E58-840A-4B4F-86FB-5FDFD05354CA.root',
 	#"/store/relval/CMSSW_7_4_0/RelValSingleMuPt10_UP15/GEN-SIM-RECO/MCRUN2_74_V7_GENSIM_7_1_15-v1/00000/D04150EB-9DDD-E411-8E3D-002618943911.root"
     )
 )
@@ -77,7 +76,7 @@ process.PixelFilter = cms.EDFilter(
 try:
     rootFileName = os.environ["JOB"] + ".root"
 except KeyError:
-    rootFileName = "pixelTree_MC.root"
+    rootFileName = "pixelTree_realistic_MC.root"
 
 process.TFileService = cms.Service("TFileService",
     fileName = cms.string(

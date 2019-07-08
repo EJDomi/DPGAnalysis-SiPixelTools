@@ -110,6 +110,7 @@
 #include "DataFormats/SiPixelDigi/interface/PixelDigi.h"
 #include "DataFormats/SiPixelCluster/interface/SiPixelCluster.h"
 
+#include "DataFormats/BeamSpot/interface/BeamSpot.h"
 
 //Luminosity
 #include "FWCore/Framework/interface/LuminosityBlock.h"
@@ -197,6 +198,7 @@ PixelTree::PixelTree(edm::ParameterSet const& iConfig):
   PixelRecHitToken        = consumes <SiPixelRecHitCollection>(fPixelRecHitLabel);
   TrackToken              = consumes <std::vector<reco::Track>>(fTrackCollectionLabel) ;
   TTAToken                = consumes <TrajTrackAssociationCollection> (fTrajectoryInputLabel);
+  BeamSpotToken           = consumes <reco::BeamSpot> (edm::InputTag("offlineBeamSpot"));
 
   init();
 }
@@ -258,6 +260,14 @@ void PixelTree::beginJob() {
   fTree->Branch("bz",           &fBz,           "bz/F");
   fTree->Branch("tlo",          &fTimeLo,       "tlo/i");
   fTree->Branch("thi",          &fTimeHi,       "thi/i");
+
+  fTree->Branch("BsX",          &fBsX,          "fBsX/F");
+  fTree->Branch("BsY",          &fBsY,          "fBsY/F");
+  fTree->Branch("BsZ",          &fBsZ,          "fBsZ/F");
+  fTree->Branch("Bs_sigmaZ",          &fBs_sigmaZ,          "fBs_sigmaZ/F");
+  fTree->Branch("Bs_dxdz",          &fBs_dxdz,          "fBs_dxdz/F");
+  fTree->Branch("Bs_widthX",          &fBs_widthX,          "fBs_widthX/F");
+  fTree->Branch("Bs_widthY",          &fBs_widthY,          "fBs_widthY/F");
 
   fTree->Branch("Lumi",         &fLumi,         "fLumi/F");
   fTree->Branch("LumiInt",      &fLumiInt,      "fLumiInt/F");
@@ -491,6 +501,26 @@ void PixelTree::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 
   // edm::Handle<MeasurementTrackerEvent> measurementTrackerEvent;
   // iEvent.getByLabel("MeasurementTrackerEvent", measurementTrackerEvent);
+
+  reco::BeamSpot beamSpot;
+  edm::Handle<reco::BeamSpot> beamSpotHandle;
+  iEvent.getByToken(BeamSpotToken, beamSpotHandle);
+  if(beamSpotHandle.isValid())
+  {
+      beamSpot = *beamSpotHandle;
+  } else
+  {
+      edm::LogInfo("PixelTree")
+          << "No beam spot available from EventSetup \n";
+  }
+
+  fBsX = beamSpot.x0();
+  fBsY = beamSpot.y0();
+  fBsZ = beamSpot.z0();
+  fBs_sigmaZ = beamSpot.sigmaZ();
+  fBs_dxdz = beamSpot.dxdz();
+  fBs_widthX = beamSpot.BeamWidthX();
+  fBs_widthY = beamSpot.BeamWidthY();
 
   static int nevt(0); 
   static unsigned int oldRun(0); 
